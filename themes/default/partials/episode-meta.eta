@@ -1,0 +1,7 @@
+<p class="episode-meta">
+<% if (it.season !== undefined) { %><span>Season <%= it.season %></span><% } %>
+<% if (it.number !== undefined) { %><span>Episode <%= it.number %></span><% } %>
+<span><time datetime="<%= it.dateIso %>"><%= it.dateLabel %></time></span>
+<% if (it.durationLabel) { %><span><%= it.durationLabel %></span><% } %>
+<% if (it.isVideo) { %><span>Video</span><% } %>
+</p>

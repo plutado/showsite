@@ -1,0 +1,55 @@
+<% layout("layout") %>
+<% const ep = it.episode %>
+<article class="episode">
+  <h1><%= ep.title %></h1>
+  <%~ include("partials/episode-meta", ep) %>
+  <%~ include("partials/player", ep) %>
+  <p class="media-links">
+    <a href="<%= ep.media %>">Download</a>
+<% if (ep.transcriptUrl) { %>    · <a href="<%= ep.transcriptUrl %>">Transcript</a><% } %>
+<% if (ep.chaptersUrl) { %>    · <a href="<%= ep.chaptersUrl %>">Chapters (JSON)</a><% } %>
+  </p>
+
+<% if (ep.guests.length) { %>
+  <section class="guests">
+    <h2>Guests</h2>
+    <ul>
+<% ep.guests.forEach(function (g) { %>
+      <li><% if (g.href) { %><a href="<%= g.href %>"><%= g.name %></a><% } else { %><%= g.name %><% } %></li>
+<% }) %>
+    </ul>
+  </section>
+<% } %>
+
+<% if (ep.chapters.length) { %>
+  <section class="chapters">
+    <h2>Chapters</h2>
+    <ol>
+<% ep.chapters.forEach(function (c) { %>
+      <li><button type="button" data-seek="<%= c.start %>"><%= c.label %></button> <%= c.title %><% if (c.url) { %> (<a href="<%= c.url %>">link</a>)<% } %></li>
+<% }) %>
+    </ol>
+  </section>
+<% } %>
+
+  <section class="show-notes">
+    <h2>Show notes</h2>
+    <%~ ep.html %>
+  </section>
+
+<% if (ep.links.length) { %>
+  <section class="episode-links">
+    <h2>Links</h2>
+    <ul>
+<% ep.links.forEach(function (link) { %>
+      <li><a href="<%= link.url %>"><%= link.title %></a></li>
+<% }) %>
+    </ul>
+  </section>
+<% } %>
+
+  <nav class="episode-nav" aria-label="More episodes">
+<% if (it.newer) { %>    <a rel="next" href="<%= it.newer.url %>">Newer: <%= it.newer.title %></a><% } %>
+<% if (it.older) { %>    <a rel="prev" href="<%= it.older.url %>">Older: <%= it.older.title %></a><% } %>
+  </nav>
+</article>

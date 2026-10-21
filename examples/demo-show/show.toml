@@ -1,0 +1,38 @@
+# An invented show used to demonstrate and test showsite.
+# The hosts, guests and media files are fictional. Media URLs use the
+# reserved example.com domain and do not resolve to real files.
+
+title = "The Lamplight Workshop"
+author = "Wren Halloway and Osric Penhale"
+description = "A small podcast about repairing old things: lamps, radios, clocks and the tools that fix them. Two friends, one workbench, and a lot of patience."
+language = "en"
+artwork = "artwork.svg"
+categories = ["Leisure > Hobbies", "Education > How To"]
+explicit = false
+type = "episodic"
+medium = "podcast"
+copyright = "Copyright 2026 The Lamplight Workshop (a fictional show)"
+base_url = "https://plutado.github.io/showsite/"
+
+# Pin the show guid so it survives a change of base URL. This value is the
+# podcast:guid derived from https://plutado.github.io/showsite/feed.xml.
+guid = "93c8db0b-5fcf-513d-a0a8-3430d8294b5d"
+
+[owner]
+name = "Wren Halloway"
+email = "hello@example.com"
+
+[[hosts]]
+name = "Wren Halloway"
+href = "https://example.com/wren"
+
+[[hosts]]
+name = "Osric Penhale"
+
+[[links]]
+title = "Website"
+url = "https://example.com/lamplight"
+
+[[links]]
+title = "Mailing list"
+url = "https://example.com/lamplight/newsletter"

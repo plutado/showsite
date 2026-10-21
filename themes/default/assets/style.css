@@ -1,0 +1,87 @@
+:root {
+  --bg: #fbfaf7;
+  --fg: #1f1d1a;
+  --muted: #615c55;
+  --accent: #9a4a12;
+  --card: #ffffff;
+  --border: #e4dfd6;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #171614;
+    --fg: #ece8e1;
+    --muted: #a8a096;
+    --accent: #f0a368;
+    --card: #211f1c;
+    --border: #36322d;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+a { color: var(--accent); }
+
+main, .site-header, .site-footer {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.site-title { font-weight: 700; text-decoration: none; color: var(--fg); }
+.site-footer { color: var(--muted); font-size: 0.9rem; padding-top: 2rem; padding-bottom: 2rem; }
+
+.show-intro { display: flex; gap: 1.5rem; align-items: flex-start; margin: 1rem 0 2rem; }
+.show-artwork { width: 200px; height: 200px; border-radius: 12px; flex: none; }
+.show-intro h1 { margin: 0; line-height: 1.2; }
+.show-author, .show-hosts, .episode-meta { color: var(--muted); }
+.show-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; padding: 0; list-style: none; }
+
+@media (max-width: 600px) {
+  .show-intro { flex-direction: column; }
+  .show-artwork { width: 160px; height: 160px; }
+}
+
+.episode-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+.episode-card h3 { margin: 0 0 0.25rem; }
+
+.episode-meta { display: flex; flex-wrap: wrap; gap: 0 1rem; margin: 0 0 0.5rem; font-size: 0.95rem; }
+
+.player { width: 100%; margin: 1rem 0 0.5rem; }
+video.player { background: #000; border-radius: 8px; }
+
+.chapters ol { padding-left: 1.25rem; }
+.chapters button {
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0 0.4rem;
+  cursor: pointer;
+}
+
+.episode-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }

@@ -1,0 +1,14 @@
+<% if (it.isVideo) { %>
+<video class="player" controls preload="metadata" poster="<%= it.posterUrl %>" data-showsite-player>
+  <source src="<%= it.media %>" type="<%= it.mediaType %>">
+<% if (it.transcriptUrl && /\.vtt$/.test(it.transcriptUrl)) { %>
+  <track kind="captions" src="<%= it.transcriptUrl %>" default>
+<% } %>
+  <a href="<%= it.media %>">Download the video</a>
+</video>
+<% } else { %>
+<audio class="player" controls preload="metadata" data-showsite-player>
+  <source src="<%= it.media %>" type="<%= it.mediaType %>">
+  <a href="<%= it.media %>">Download the audio</a>
+</audio>
+<% } %>

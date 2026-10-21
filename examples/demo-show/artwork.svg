@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3000" height="3000" viewBox="0 0 3000 3000" role="img" aria-labelledby="t">
+  <title id="t">The Lamplight Workshop</title>
+  <defs>
+    <radialGradient id="glow" cx="1500" cy="1350" r="1100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffd58a"/>
+      <stop offset="0.45" stop-color="#e8873a"/>
+      <stop offset="1" stop-color="#2a1a12"/>
+    </radialGradient>
+  </defs>
+  <rect width="3000" height="3000" fill="#2a1a12"/>
+  <rect width="3000" height="3000" fill="url(#glow)"/>
+  <!-- Lamp shade -->
+  <path d="M1080 700 L1920 700 L2160 1180 L840 1180 Z" fill="#3b2418"/>
+  <!-- Bulb -->
+  <circle cx="1500" cy="1300" r="150" fill="#fff4d6"/>
+  <!-- Arm and base -->
+  <rect x="1470" y="1180" width="60" height="40" fill="#3b2418"/>
+  <path d="M1500 1450 L1500 1900" stroke="#3b2418" stroke-width="70" stroke-linecap="round"/>
+  <rect x="1150" y="1900" width="700" height="110" rx="40" fill="#3b2418"/>
+  <!-- Workbench -->
+  <rect x="0" y="2010" width="3000" height="990" fill="#1c110b"/>
+  <text x="1500" y="2420" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="230" fill="#ffe7bd">The Lamplight</text>
+  <text x="1500" y="2700" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="230" fill="#ffe7bd">Workshop</text>
+</svg>

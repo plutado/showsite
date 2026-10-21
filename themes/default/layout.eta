@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="<%= it.meta.language %>">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= it.meta.title %></title>
+<meta name="description" content="<%= it.meta.description %>">
+<link rel="canonical" href="<%= it.meta.canonicalUrl %>">
+<link rel="alternate" type="application/rss+xml" title="<%= it.meta.siteName %>" href="<%= it.meta.feedUrl %>">
+<meta property="og:site_name" content="<%= it.meta.siteName %>">
+<meta property="og:title" content="<%= it.meta.title %>">
+<meta property="og:description" content="<%= it.meta.description %>">
+<meta property="og:url" content="<%= it.meta.canonicalUrl %>">
+<meta property="og:type" content="<%= it.meta.ogType %>">
+<meta property="og:image" content="<%= it.meta.imageUrl %>">
+<% if (it.meta.media) { %>
+<% if (it.meta.media.isVideo) { %>
+<meta property="og:video" content="<%= it.meta.media.url %>">
+<meta property="og:video:type" content="<%= it.meta.media.type %>">
+<% } else { %>
+<meta property="og:audio" content="<%= it.meta.media.url %>">
+<meta property="og:audio:type" content="<%= it.meta.media.type %>">
+<% } %>
+<% } %>
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<%= it.meta.title %>">
+<meta name="twitter:description" content="<%= it.meta.description %>">
+<meta name="twitter:image" content="<%= it.meta.imageUrl %>">
+<meta name="generator" content="<%= it.site.generator %>">
+<link rel="stylesheet" href="<%= it.site.asset('style.css') %>">
+</head>
+<body>
+<header class="site-header">
+  <a class="site-title" href="<%= it.site.homeUrl %>"><%= it.site.title %></a>
+  <nav><a href="<%= it.site.feedUrl %>">RSS feed</a></nav>
+</header>
+<main>
+<%~ it.body %>
+</main>
+<footer class="site-footer">
+  <p><% if (it.site.copyright) { %><%= it.site.copyright %> · <% } %>Built with <%= it.site.generator %>.</p>
+</footer>
+<script src="<%= it.site.asset('player.js') %>" defer></script>
+</body>
+</html>

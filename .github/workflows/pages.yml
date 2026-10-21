@@ -1,0 +1,67 @@
+name: Deploy demo to GitHub Pages
+
+# Builds examples/demo-show and publishes it to GitHub Pages.
+# In the repository settings, set Pages > Build and deployment > Source to
+# "GitHub Actions" before the first run.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Base URL to build with (defaults to the Pages URL)"
+        required: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build showsite
+        run: npm run build
+
+      - name: Build the demo show
+        env:
+          # Precedence: manual input, then the SHOWSITE_BASE_URL repository
+          # variable, then the URL GitHub Pages reports for this repository
+          # (https://plutado.github.io/showsite/ for plutado/showsite).
+          SHOWSITE_BASE_URL: ${{ inputs.base_url || vars.SHOWSITE_BASE_URL || format('{0}/', steps.pages.outputs.base_url) }}
+        run: node dist/cli.js build examples/demo-show --out _site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,32 @@
+<% layout("layout") %>
+<section class="show-intro">
+  <img class="show-artwork" src="<%= it.site.artworkUrl %>" alt="<%= it.site.title %> artwork" width="240" height="240">
+  <div>
+    <h1><%= it.site.title %></h1>
+    <p class="show-author">By <%= it.site.author %></p>
+    <p><%= it.site.description %></p>
+    <ul class="show-links">
+      <li><a href="<%= it.site.feedUrl %>">RSS feed</a></li>
+<% it.site.links.forEach(function (link) { %>
+      <li><a href="<%= link.url %>"><%= link.title %></a></li>
+<% }) %>
+    </ul>
+<% if (it.site.hosts.length) { %>
+    <p class="show-hosts">Hosted by <%= it.site.hosts.map(function (h) { return h.name }).join(" and ") %></p>
+<% } %>
+  </div>
+</section>
+
+<section class="episode-list" aria-labelledby="episodes-heading">
+  <h2 id="episodes-heading">Episodes</h2>
+<% if (!it.episodes.length) { %>
+  <p>No episodes yet.</p>
+<% } %>
+<% it.episodes.forEach(function (ep) { %>
+  <article class="episode-card">
+    <h3><a href="<%= ep.url %>"><%= ep.title %></a></h3>
+    <%~ include("partials/episode-meta", ep) %>
+    <p><%= ep.summary %></p>
+  </article>
+<% }) %>
+</section>
