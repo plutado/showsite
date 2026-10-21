@@ -6,6 +6,8 @@ All notable changes to this project are recorded here. The format follows
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-21
+
 ### Added
 
 - Show folder format: `show.toml` plus one Markdown file per episode, with
@@ -23,3 +25,6 @@ All notable changes to this project are recorded here. The format follows
 - Invented demo show in `examples/demo-show/` with three episodes.
 - Tests that build the demo show and check the feed structurally.
 - CI workflow and a GitHub Pages workflow that publishes the demo show.
+
+[Unreleased]: https://github.com/plutado/showsite/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/plutado/showsite/releases/tag/v0.1.0
